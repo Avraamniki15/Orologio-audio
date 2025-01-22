@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأجبية المسموعة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        img {
+            max-width: 200px;
+            margin: 10px auto;
+            display: block;
+        }
+        .prayer-list {
+            margin: 20px auto;
+            max-width: 400px;
+            text-align: center;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        audio {
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>الأجبية المسموعة</h1>
+    <img src="agpeya.jpg" alt="صورة الأجبية">
+    <div class="prayer-list">
+        <button onclick="playPrayer('morning.mp3')">صلاة باكر</button>
+        <button onclick="playPrayer('third.mp3')">صلاة الساعة الثالثة</button>
+        <button onclick="playPrayer('sixth.mp3')">صلاة الساعة السادسة</button>
+        <button onclick="playPrayer('ninth.mp3')">صلاة الساعة التاسعة</button>
+        <button onclick="playPrayer('eleventh.mp3')">صلاة الغروب</button>
+        <button onclick="playPrayer('twelfth.mp3')">صلاة النوم</button>
+    </div>
+    <audio id="audioPlayer" controls></audio>
+
+    <script>
+        function playPrayer(fileName) {
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.src = fileName;
+            audioPlayer.play();
+        }
+    </script>
+</body>
+</html>
