@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -15,22 +14,23 @@
         }
         h1 {
             color: #2c3e50;
-            margin-bottom: 10px;
         }
-        img {
-            max-width: 200px;
-            margin: 10px auto;
-            display: block;
-        }
-        .prayer-list {
+        .dropdown {
             margin: 20px auto;
             max-width: 400px;
             text-align: center;
         }
-        button {
+        select {
             width: 100%;
             padding: 10px;
-            margin: 5px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
             font-size: 16px;
             background-color: #3498db;
             color: white;
@@ -49,18 +49,32 @@
 </head>
 <body>
     <h1>الأجبية المسموعة</h1>
-    <img src="agpeya.jpg" alt="صورة الأجبية">
-    <div class="prayer-list">
-        <button onclick="playPrayer('morning.mp3')">صلاة باكر</button>
-        <button onclick="playPrayer('third.mp3')">صلاة الساعة الثالثة</button>
+    <div class="dropdown">
+        <select id="prayerSelector">
+            <option value="" disabled selected>اختر صلاة...</option>
+            <option value="morning.mp3">صلاة باكر</option>
+            <option value="third.mp3">صلاة الساعة الثالثة</option>
+            <option value="sixth.mp3">صلاة الساعة السادسة</option>
+            <option value="ninth.mp3">صلاة الساعة التاسعة</option>
+            <option value="eleventh.mp3">صلاة الغروب</option>
+            <option value="twelfth.mp3">صلاة النوم</option>
+        </select>
+        <button onclick="playSelectedPrayer()">تشغيل</button>
     </div>
     <audio id="audioPlayer" controls></audio>
 
     <script>
-        function playPrayer(fileName) {
+        function playSelectedPrayer() {
+            const selector = document.getElementById('prayerSelector');
             const audioPlayer = document.getElementById('audioPlayer');
-            audioPlayer.src = fileName;
-            audioPlayer.play();
+            const selectedFile = selector.value;
+
+            if (selectedFile) {
+                audioPlayer.src = selectedFile;
+                audioPlayer.play();
+            } else {
+                alert('يرجى اختيار صلاة لتشغيلها.');
+            }
         }
     </script>
 </body>
